@@ -1,0 +1,38 @@
+﻿@model List<Genre>
+<!--<link rel="stylesheet" href="app.css" type="text/css" />-->
+
+
+<h1>Books Available to Loan</h1>
+@foreach (Genre Item in Model)
+{
+
+    <h2>Genre:@Item.GenreName</h2>
+    <hr>
+    <div class="row">
+
+        @foreach (var book in Item.Books)
+        {
+            <div class="col-md-3 mb-3">
+                <div class="card">
+                    <h4 class="card-header" name="Title"> @Html.DisplayFor(modelItem => book.Title)</h4>
+                    <div class="card-body">
+                        <p class="card" name="Description">Description: @Html.DisplayFor(modelItem => book.Description)</p>
+                        <p class="card" name="Quantity">Quantity: @Html.DisplayFor(modelItem => book.Quantity)</p>
+                        <p class="card" name="ISBN">ISBN: @Html.DisplayFor(modelItem => book.ISBN)</p>
+                        @foreach (var author in book.Authors)
+                        {
+                            <p class="card">Author: @Html.DisplayFor(modelItem => author.AuthorName)</p>
+                        }
+                    </div>
+                    <div class="card-footer">
+                        <form asp-controller="Loans" asp-action="LoanBookPage" method="POST">
+                            <input hidden name="Id" value="@book.Id">
+                            <td><input type="submit" class="btn btn-secondary" value="Loan Book" /></td>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        }
+    </div>
+}

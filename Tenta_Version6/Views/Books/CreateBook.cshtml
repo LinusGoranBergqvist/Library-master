@@ -1,0 +1,57 @@
+﻿@model Tenta_Version6.Models.ViewModels.AuthorGenre
+
+<form asp-route="CreateBook" method="post">
+    <div class="card">
+        <div class="card-header">
+            <h2>Add New Book</h2>
+        </div>
+        <div class="card-body">
+            <label for="Title">Title:</label>
+            <input type="text" name="BookTitle" id="BookTitle" class="form-control" required />
+            <br />
+            <label for="Description">Description:</label>
+            <input type="text" name="BookDescription" id="BookDescription" class="form-control" required />
+            <br />
+            <label for="ISBN">ISBN:</label>
+            <input type="text" name="BookISBN" id="BookISBN" class="form-control" required />
+            <br />
+            <div class="dropdown">
+                <button class="btn btn-primary dropdown-toggle" type="button" id="tag-dropdown" data-bs-toggle="dropdown" data-bs-haspopup="true" aria-expanded="false">
+                Choose Author
+                </button>
+                    <div class="dropdown-menu" aria-labelledby="author-dropdown">
+                    @foreach (var author in Model.Authors)
+                    {
+                        <div class="dropdown-item">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="@author.AuthorName" name="BookAuthors" value="@author.AuthorName">
+                                <label class="form-check-label" for="@author.AuthorName">
+                                    @author.AuthorName
+                                </label>
+                            </div>
+                        </div>
+                    }
+                    </div>
+                <button class="btn btn-primary dropdown-toggle" type="button" id="tag-dropdown" data-bs-toggle="dropdown" data-bs-haspopup="true" aria-expanded="false">
+                    Choose Genre
+                </button>
+                    <div class="dropdown-menu" aria-labelledby="genre-dropdown">
+                    @foreach (var genre in Model.Genres)
+                    {
+                            <div class="dropdown-item">
+                                <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="@genre.GenreName" name="BookGenres" value="@genre.GenreName">
+                                <label class="form-check-label" for="@genre.GenreName">
+                                    @genre.GenreName
+                                    </label>
+                                </div>
+                            </div>
+                    }
+                    </div>
+                    <br />
+                    <br />
+                    <button type="submit" class="btn btn-success">Add Book</button>
+            </div>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,25 @@
+﻿@model List<User>
+<h1>Choose User Wich is Loaning Book</h1>
+@{
+
+    foreach (User Item in Model)
+    {
+
+        <div class="col-md-3 mb-3">
+            <div class="card">
+                <h4 class="card-header" name="UserName">UserName: @Html.DisplayFor(modelItem => Item.Name)</h4>
+                <div class="card-body">
+                    <p class="card" name="UserAddress">Address: @Html.DisplayFor(modelItem => Item.Address)</p>
+                    <p class="card" name="UserPhoneNumber">Phone Number: @Html.DisplayFor(modelItem => Item.PhoneNumber)</p>
+                </div>
+                <div class="card-footer">
+                    <form asp-controller="Loans" asp-action="UserLoan" method="POST">
+                        <input hidden name="removeUserId" value="@Item.Id">
+                        <td><input type="submit" class="btn btn-danger" value="Loan" /></td>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    }
+}

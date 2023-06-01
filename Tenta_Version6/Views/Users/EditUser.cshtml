@@ -1,0 +1,27 @@
+﻿@model Tenta_Version6.Models.User
+
+
+<form asp-action="EditUser" method="POST">
+    <div class="col-md-3 mb-3">
+        <div class="card">
+            <input hidden name="Id" value="@Html.DisplayFor(model => model.Id)" />
+            <h4 class="card-header">Edit User Info</h4>
+            <div class="card-body">
+                <br/>
+                <label for="Username">Username:</label>
+                <input class="card" type="text" name="UserName" @Html.EditorFor(model => model.Name)
+                <br/>
+                <label for="Address">Address:</label>
+                <input class="card" type="text" name="UserAddress" @Html.EditorFor(model => model.Address)
+                <br/>
+                <label for="PhoneNumber">Phone Number:</label>
+                <input class="card" type="text" name="UserPhoneNumber" @Html.EditorFor(model => model.PhoneNumber)
+                <br/>
+            </div>
+            <div class="card-footer">
+                <button class="btn btn-success" type="submit"></button>
+            </div>
+        </div>
+    </div>
+
+</form>

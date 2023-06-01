@@ -1,0 +1,29 @@
+﻿@model List<Book>
+
+
+@{
+
+    foreach (Book Item in Model)
+    {
+    <div class="row">
+            <div class="col-md-3 mb-3">
+                <div class="card">
+                <h4 class="card-header">Book Title: @Html.DisplayFor(modelItem => Item.Title)</h4>
+                    <div class="card-body">
+                    <p class="card">Quantity: @Html.DisplayFor(modelItem => Item.Quantity)</p>
+                    <p class="card">ISBN: @Html.DisplayFor(modelItem => Item.ISBN)</p>
+                    </div>
+                </div>
+            </div>
+        
+
+            <div class="col-md-3 mb-3">
+                <p class="card">Descrption: @Html.DisplayFor(modelItem => Item.Description)</p>
+            </div>
+            <div class="col-md-3 mb-3">
+                <a asp-controller="Books" asp-action="Edit" asp-route-id="@Item.Id" class="btn btn-success text-decoration-none" name="Id" style="color:White">Edit Book</a>
+
+            </div>
+    </div>
+    }
+}

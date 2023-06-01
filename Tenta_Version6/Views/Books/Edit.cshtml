@@ -1,0 +1,28 @@
+﻿@model Tenta_Version6.Models.Book
+
+
+<form asp-action="Edit" method="POST">
+    <div class="col-md-3 mb-3">
+        <div class="card">
+            <input hidden name="Id" value="@Html.DisplayFor(model => model.Id)">
+            <h4 class="card-header">Edit Book Info</h4>
+            <div class="card-body">
+                <label type="Title">Title:</label>
+                <input class="card" type="text" @Html.EditorFor(model => model.Title)
+
+                <label type="Title">Description:</label>
+                <input class="card" type="text" @Html.EditorFor(model => model.Description)
+                
+                <label type="Title">Quantity:</label>
+                <input class="card" type="text" @Html.EditorFor(model => model.Quantity)
+                
+                <label type="Title">ISBN:</label>
+                <input class="card" type="text" @Html.EditorFor(model => model.ISBN)
+            </div>
+            <div class="card-footer">
+                <button class="btn btn-success" type="submit"></button>
+            </div>
+        </div>
+    </div>
+
+</form>
